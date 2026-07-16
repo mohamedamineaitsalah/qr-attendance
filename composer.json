@@ -12,7 +12,8 @@
         "laravel/tinker": "^2.10.1",
         "maatwebsite/excel": "*",
         "simplesoftwareio/simple-qrcode": "*",
-        "ext-gd": "*"
+        "ext-gd": "*",
+        "ext-zip": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
