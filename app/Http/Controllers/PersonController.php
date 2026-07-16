@@ -72,7 +72,8 @@ class PersonController extends Controller
     public function downloadQr(Person $person)
     {
         $qrSvg = QrCode::format('svg')
-            ->size(300)
+            ->size(400)
+            ->margin(2)
             ->errorCorrection('H')
             ->generate($person->qr_token);
 
@@ -84,7 +85,8 @@ class PersonController extends Controller
     public function showQr(Person $person)
     {
         $qrSvg = QrCode::format('svg')
-            ->size(250)
+            ->size(400)
+            ->margin(2)
             ->errorCorrection('H')
             ->generate($person->qr_token);
 

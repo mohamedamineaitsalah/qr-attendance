@@ -42,13 +42,12 @@
 
             {{-- Actions --}}
             <div class="px-4 pb-4 d-flex gap-2">
+                <button onclick="window.print()" class="btn btn-primary-custom flex-grow-1">
+                    <i class="bi bi-printer me-2"></i> {{ __('Imprimer la carte') }}
+                </button>
                 <a href="{{ route('persons.qr.download', $person) }}"
-                   class="btn btn-primary-custom flex-grow-1">
-                    <i class="bi bi-download me-2"></i> {{ __('Download QR (SVG)') }}
-                </a>
-                <a href="{{ route('persons.edit', $person) }}"
-                   class="btn btn-outline-secondary rounded-3">
-                    <i class="bi bi-pencil"></i>
+                   class="btn btn-outline-secondary rounded-3" title="Télécharger SVG">
+                    <i class="bi bi-download"></i>
                 </a>
                 <a href="{{ route('persons.index') }}"
                    class="btn btn-outline-secondary rounded-3">
@@ -58,4 +57,32 @@
         </div>
     </div>
 </div>
+
+@push('styles')
+<style>
+    @media print {
+        body * {
+            visibility: hidden;
+        }
+        .content-card, .content-card * {
+            visibility: visible;
+        }
+        .content-card {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        .btn, .badge-inside, .badge-outside, .px-4.pb-2, .px-4.pb-4 {
+            display: none !important;
+        }
+        h2 {
+            font-size: 2.5rem !important;
+            margin-bottom: 20px !important;
+        }
+    }
+</style>
+@endpush
 @endsection

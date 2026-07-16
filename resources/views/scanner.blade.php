@@ -145,8 +145,8 @@ function startScanner() {
     if (scanning) return;
     html5QrCode = new Html5Qrcode("qr-reader");
     const config = {
-        fps: 15,
-        qrbox: { width: 200, height: 200 },
+        fps: 30,
+        qrbox: { width: 250, height: 250 },
         aspectRatio: 1.0,
         disableFlip: false,
     };
@@ -208,12 +208,12 @@ async function onScanSuccess(decodedText) {
         const data = await response.json();
         showResult(data);
 
-        // Re-enable scanning after 3 seconds
+        // Re-enable scanning after 5 seconds to avoid double scans
         setTimeout(() => {
             processingLock = false;
             scanStatus.textContent = '{{ __('Scanning…') }}';
             scanStatus.style.color = '#6c63ff';
-        }, 3000);
+        }, 5000);
 
     } catch (err) {
         showError('{{ __('Network error. Please try again.') }}');

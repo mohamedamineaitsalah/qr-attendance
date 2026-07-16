@@ -40,6 +40,7 @@ Route::middleware('auth.admin')->group(function () {
     Route::get('/attendance',       [AttendanceController::class, 'history'])->name('attendance.history');
     Route::delete('/attendance/{attendance}', [AttendanceController::class, 'destroy'])->name('attendance.destroy');
     Route::delete('/attendance-clear-all',    [AttendanceController::class, 'clearAll'])->name('attendance.clear_all');
+    Route::delete('/rejected-clear-all',      [AttendanceController::class, 'clearRejected'])->name('attendance.clear_rejected');
     Route::get('/rejected-scans',   [AttendanceController::class, 'rejected'])->name('attendance.rejected');
 
     // Export

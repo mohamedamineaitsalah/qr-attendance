@@ -59,6 +59,12 @@ class AttendanceController extends Controller
         return redirect()->back()->with('success', __('All history cleared successfully.'));
     }
 
+    public function clearRejected()
+    {
+        RejectedScan::truncate();
+        return redirect()->back()->with('success', __('All rejected scans cleared successfully.'));
+    }
+
     public function rejected(Request $request)
     {
         $records = RejectedScan::with('person')

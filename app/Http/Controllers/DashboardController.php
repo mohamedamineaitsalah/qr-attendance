@@ -27,6 +27,16 @@ class DashboardController extends Controller
             ->limit(10)
             ->get();
 
+        if (request()->ajax()) {
+            return view('partials.dashboard-content', compact(
+                'insideCount',
+                'entriesCount',
+                'exitsCount',
+                'latestScans',
+                'latestRejected'
+            ));
+        }
+
         return view('dashboard', compact(
             'insideCount',
             'entriesCount',

@@ -58,7 +58,7 @@
         <i class="bi bi-file-earmark-pdf me-2"></i>{{ __('Export PDF') }}
     </a>
     
-    <form action="{{ route('attendance.clear_all') }}" method="POST" class="ms-2" onsubmit="return confirm('{{ __('Are you sure you want to clear all history?') }}')">
+    <form action="{{ route('attendance.clear_all') }}" method="POST" class="ms-2" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer tout l\'historique ?')">
         @csrf @method('DELETE')
         <button type="submit" class="btn btn-sm rounded-3" style="background:rgba(245,158,11,0.1);color:#f59e0b;font-weight:600;font-size:0.82rem;">
             <i class="bi bi-trash-fill me-2"></i>{{ __('Clear All History') }}
