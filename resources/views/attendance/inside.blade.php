@@ -1,16 +1,16 @@
 @extends('layouts.app')
-@section('title', 'Currently Inside')
-@section('page-title', 'Currently Inside')
+@section('title', __('Currently Inside'))
+@section('page-title', __('Currently Inside'))
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
     <p class="text-muted mb-0" style="font-size:0.85rem;">
-        People currently inside the premises.
+        {{ __('People currently inside the premises.') }}
     </p>
     <div class="d-flex align-items-center gap-2">
         <span class="badge-inside" style="font-size:0.82rem;padding:8px 14px;">
             <i class="bi bi-circle-fill me-1" style="font-size:0.55rem;"></i>
-            {{ $persons->count() }} inside
+            {{ $persons->count() }} {{ __('inside') }}
         </span>
     </div>
 </div>
@@ -18,13 +18,13 @@
 <div class="content-card">
     <div class="card-header d-flex align-items-center gap-2">
         <i class="bi bi-door-open-fill" style="color:#10b981;"></i>
-        Currently Inside
+        {{ __('Currently Inside') }}
     </div>
     <div class="card-body">
         @if($persons->isEmpty())
             <div class="text-center py-5 text-muted">
                 <i class="bi bi-door-closed fs-1 d-block mb-3"></i>
-                <p class="mb-0">No one is currently inside.</p>
+                <p class="mb-0">{{ __('No one is currently inside.') }}</p>
             </div>
         @else
         <div class="table-responsive">
@@ -32,9 +32,9 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Full Name</th>
-                        <th>Entry Time</th>
-                        <th>Entry Date</th>
+                        <th>{{ __('Full Name') }}</th>
+                        <th>{{ __('Entry Time') }}</th>
+                        <th>{{ __('Entry Date') }}</th>
                     </tr>
                 </thead>
                 <tbody>

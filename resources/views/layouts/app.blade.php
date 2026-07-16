@@ -339,7 +339,7 @@
             <i class="bi bi-qr-code-scan"></i>
         </div>
         <h5>QR Attendance</h5>
-        <span>Management System</span>
+        <span>{{ __('Management System') }}</span>
     </div>
 
     <div class="sidebar-nav">
@@ -347,7 +347,7 @@
             <i class="bi bi-grid-1x2-fill"></i> {{ __('Dashboard') }}
         </a>
 
-        <div class="nav-section-label">Scanners</div>
+        <div class="nav-section-label">{{ __('Scanners') }}</div>
         <a href="{{ route('scanner.entry') }}" class="nav-link {{ request()->routeIs('scanner.entry') ? 'active' : '' }}">
             <i class="bi bi-box-arrow-in-right"></i> {{ __('Scanner Entry') }}
         </a>
@@ -355,12 +355,12 @@
             <i class="bi bi-box-arrow-right"></i> {{ __('Scanner Exit') }}
         </a>
 
-        <div class="nav-section-label">People</div>
+        <div class="nav-section-label">{{ __('People') }}</div>
         <a href="{{ route('persons.index') }}" class="nav-link {{ request()->routeIs('persons.*') ? 'active' : '' }}">
             <i class="bi bi-people-fill"></i> {{ __('Manage People') }}
         </a>
 
-        <div class="nav-section-label">Attendance</div>
+        <div class="nav-section-label">{{ __('Attendance') }}</div>
         <a href="{{ route('attendance.inside') }}" class="nav-link {{ request()->routeIs('attendance.inside') ? 'active' : '' }}">
             <i class="bi bi-door-open-fill"></i> {{ __('Currently Inside') }}
         </a>
@@ -376,7 +376,7 @@
         <div class="admin-badge">
             <div class="avatar">A</div>
             <div class="admin-info">
-                <div class="admin-name">Administrator</div>
+                <div class="admin-name">{{ __('Administrator') }}</div>
                 <small>{{ auth('admin')->user()->email ?? '' }}</small>
             </div>
         </div>

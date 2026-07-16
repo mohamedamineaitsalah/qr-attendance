@@ -1,21 +1,21 @@
 @extends('layouts.app')
-@section('title', 'Rejected Scans')
-@section('page-title', 'Rejected Scans')
+@section('title', __('Rejected Scans'))
+@section('page-title', __('Rejected Scans'))
 
 @section('content')
 <div class="content-card">
     <div class="card-header d-flex align-items-center gap-2">
         <i class="bi bi-x-octagon-fill" style="color:#f59e0b;"></i>
-        Rejected Scans Log
+        {{ __('Rejected Scans Log') }}
         <span class="ms-auto badge" style="background:rgba(245,158,11,0.1);color:#f59e0b;font-size:0.75rem;">
-            {{ $records->total() }} total
+            {{ $records->total() }} {{ __('total') }}
         </span>
     </div>
     <div class="card-body">
         @if($records->isEmpty())
             <div class="text-center py-5 text-muted">
                 <i class="bi bi-shield-check fs-1 d-block mb-3"></i>
-                <p class="mb-0">No rejected scans recorded.</p>
+                <p class="mb-0">{{ __('No rejected scans recorded.') }}</p>
             </div>
         @else
         <div class="table-responsive">
@@ -23,9 +23,9 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Person / Token</th>
-                        <th>Reason</th>
-                        <th>Date & Time</th>
+                        <th>{{ __('Person / Token') }}</th>
+                        <th>{{ __('Reason') }}</th>
+                        <th>{{ __('Date & Time') }}</th>
                     </tr>
                 </thead>
                 <tbody>

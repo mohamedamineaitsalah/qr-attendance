@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title', 'Attendance History')
-@section('page-title', 'Attendance History')
+@section('title', __('Attendance History'))
+@section('page-title', __('Attendance History'))
 
 @section('content')
 {{-- Filters --}}
@@ -12,9 +12,9 @@
         <form method="GET" action="{{ route('attendance.history') }}">
             <div class="row g-3">
                 <div class="col-md-3">
-                    <label class="form-label">Person</label>
+                    <label class="form-label">{{ __('Person') }}</label>
                     <select name="person_id" class="form-select">
-                        <option value="">All People</option>
+                        <option value="">{{ __('All People') }}</option>
                         @foreach($persons as $p)
                             <option value="{{ $p->id }}" {{ request('person_id') == $p->id ? 'selected' : '' }}>
                                 {{ $p->full_name }}
@@ -23,20 +23,20 @@
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label">Date</label>
+                    <label class="form-label">{{ __('Date') }}</label>
                     <input type="date" name="date" class="form-control" value="{{ request('date') }}">
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label">Action</label>
+                    <label class="form-label">{{ __('Action') }}</label>
                     <select name="action" class="form-select">
-                        <option value="">Entry & Exit</option>
-                        <option value="ENTRY" {{ request('action') === 'ENTRY' ? 'selected' : '' }}>Entry only</option>
-                        <option value="EXIT"  {{ request('action') === 'EXIT'  ? 'selected' : '' }}>Exit only</option>
+                        <option value="">{{ __('Entry & Exit') }}</option>
+                        <option value="ENTRY" {{ request('action') === 'ENTRY' ? 'selected' : '' }}>{{ __('Entry only') }}</option>
+                        <option value="EXIT"  {{ request('action') === 'EXIT'  ? 'selected' : '' }}>{{ __('Exit only') }}</option>
                     </select>
                 </div>
                 <div class="col-md-3 d-flex align-items-end gap-2">
                     <button type="submit" class="btn btn-primary-custom flex-grow-1">
-                        <i class="bi bi-search me-1"></i> Filter
+                        <i class="bi bi-search me-1"></i> {{ __('Filter') }}
                     </button>
                     <a href="{{ route('attendance.history') }}" class="btn btn-outline-secondary rounded-3">
                         <i class="bi bi-x"></i>
@@ -51,11 +51,11 @@
 <div class="d-flex gap-2 mb-4">
     <a href="{{ route('export.excel', request()->query()) }}"
        class="btn btn-sm rounded-3" style="background:rgba(16,185,129,0.1);color:#10b981;font-weight:600;font-size:0.82rem;">
-        <i class="bi bi-file-earmark-excel me-2"></i>Export Excel
+        <i class="bi bi-file-earmark-excel me-2"></i>{{ __('Export Excel') }}
     </a>
     <a href="{{ route('export.pdf', request()->query()) }}"
        class="btn btn-sm rounded-3" style="background:rgba(239,68,68,0.1);color:#ef4444;font-weight:600;font-size:0.82rem;">
-        <i class="bi bi-file-earmark-pdf me-2"></i>Export PDF
+        <i class="bi bi-file-earmark-pdf me-2"></i>{{ __('Export PDF') }}
     </a>
     
     <form action="{{ route('attendance.clear_all') }}" method="POST" class="ms-2" onsubmit="return confirm('{{ __('Are you sure you want to clear all history?') }}')">
@@ -66,7 +66,7 @@
     </form>
 
     <span class="ms-auto badge align-self-center" style="background:rgba(108,99,255,0.1);color:#6c63ff;font-size:0.78rem;padding:7px 12px;border-radius:8px;">
-        {{ $records->total() }} records
+        {{ $records->total() }} {{ __('records') }}
     </span>
 </div>
 
@@ -74,13 +74,13 @@
 <div class="content-card">
     <div class="card-header d-flex align-items-center gap-2">
         <i class="bi bi-clock-history" style="color:#6c63ff;"></i>
-        Complete History
+        {{ __('Complete History') }}
     </div>
     <div class="card-body">
         @if($records->isEmpty())
             <div class="text-center py-5 text-muted">
                 <i class="bi bi-inbox fs-1 d-block mb-3"></i>
-                <p class="mb-0">No attendance records found.</p>
+                <p class="mb-0">{{ __('No attendance records found.') }}</p>
             </div>
         @else
         <div class="table-responsive">
@@ -88,10 +88,10 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Person</th>
-                        <th>Action</th>
-                        <th>Date</th>
-                        <th>Time</th>
+                        <th>{{ __('Person') }}</th>
+                        <th>{{ __('Action') }}</th>
+                        <th>{{ __('Date') }}</th>
+                        <th>{{ __('Time') }}</th>
                         <th class="text-end">{{ __('Actions') }}</th>
                     </tr>
                 </thead>
@@ -109,9 +109,9 @@
                         </td>
                         <td>
                             @if($record->action === 'ENTRY')
-                                <span class="badge-entry"><i class="bi bi-arrow-down-circle me-1"></i>ENTRY</span>
+                                <span class="badge-entry"><i class="bi bi-arrow-down-circle me-1"></i>{{ __('ENTRY') }}</span>
                             @else
-                                <span class="badge-exit"><i class="bi bi-arrow-up-circle me-1"></i>EXIT</span>
+                                <span class="badge-exit"><i class="bi bi-arrow-up-circle me-1"></i>{{ __('EXIT') }}</span>
                             @endif
                         </td>
                         <td class="text-muted">{{ $record->date }}</td>

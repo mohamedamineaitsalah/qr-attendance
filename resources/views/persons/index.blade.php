@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title', 'Manage People')
-@section('page-title', 'Manage People')
+@section('title', __('Manage People'))
+@section('page-title', __('Manage People'))
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
@@ -22,11 +22,11 @@
                 </span>
                 <input type="text" name="search" class="form-control border-start-0"
                        style="border-radius:0 10px 10px 0;"
-                       placeholder="Search by name..." value="{{ $search ?? '' }}">
+                       placeholder="{{ __('Search by name...') }}" value="{{ $search ?? '' }}">
             </div>
-            <button type="submit" class="btn btn-primary-custom px-4">Search</button>
+            <button type="submit" class="btn btn-primary-custom px-4">{{ __('Search') }}</button>
             @if($search)
-                <a href="{{ route('persons.index') }}" class="btn btn-outline-secondary">Clear</a>
+                <a href="{{ route('persons.index') }}" class="btn btn-outline-secondary">{{ __('Clear') }}</a>
             @endif
         </form>
     </div>
@@ -35,9 +35,9 @@
 <div class="content-card">
     <div class="card-header d-flex align-items-center gap-2">
         <i class="bi bi-people-fill" style="color:#6c63ff;"></i>
-        All People
+        {{ __('All People') }}
         <span class="ms-auto badge" style="background:rgba(108,99,255,0.1);color:#6c63ff;font-size:0.75rem;">
-            {{ $persons->total() }} total
+            {{ $persons->total() }} {{ __('total') }}
         </span>
     </div>
     <div class="card-body">
@@ -52,17 +52,17 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Full Name</th>
-                        <th>Status</th>
-                        <th>QR Token</th>
-                        <th>Registered</th>
-                        <th class="text-end">Actions</th>
+                        <th>{{ __('Full Name') }}</th>
+                        <th>{{ __('Status') }}</th>
+                        <th>{{ __('QR Token') }}</th>
+                        <th>{{ __('Registered') }}</th>
+                        <th class="text-end">{{ __('Actions') }}</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($persons as $person)
                     <tr>
-                        <td class="text-muted" style="font-size:0.8rem;">{{ $person->id }}</td>
+                        <td class="text-muted" style="font-size:0.8rem;">{{ ($persons->currentPage() - 1) * $persons->perPage() + $loop->iteration }}</td>
                         <td>
                             <div class="d-flex align-items-center gap-2">
                                 <div style="width:36px;height:36px;background:linear-gradient(135deg,#6c63ff,#a78bfa);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.85rem;flex-shrink:0;">
@@ -75,9 +75,9 @@
                         </td>
                         <td>
                             @if($person->status === 'INSIDE')
-                                <span class="badge-inside"><i class="bi bi-circle-fill me-1" style="font-size:0.55rem;"></i>INSIDE</span>
+                                <span class="badge-inside"><i class="bi bi-circle-fill me-1" style="font-size:0.55rem;"></i>{{ __('INSIDE') }}</span>
                             @else
-                                <span class="badge-outside"><i class="bi bi-circle me-1" style="font-size:0.55rem;"></i>OUTSIDE</span>
+                                <span class="badge-outside"><i class="bi bi-circle me-1" style="font-size:0.55rem;"></i>{{ __('OUTSIDE') }}</span>
                             @endif
                         </td>
                         <td>

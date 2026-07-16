@@ -117,7 +117,7 @@
             <i class="bi bi-qr-code-scan"></i>
         </div>
         <h1 class="login-title">QR Attendance</h1>
-        <p class="login-subtitle">Sign in to admin panel</p>
+        <p class="login-subtitle">{{ __('Sign in to admin panel') }}</p>
 
         @if ($errors->any())
             <div class="alert alert-danger mb-3">
@@ -129,7 +129,7 @@
         <form method="POST" action="{{ route('login.submit') }}">
             @csrf
             <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
+                <label for="email" class="form-label">{{ __('Email address') }}</label>
                 <div class="input-icon">
                     <i class="bi bi-envelope-fill"></i>
                     <input id="email" type="email" name="email" class="form-control @error('email') is-invalid @enderror"
@@ -137,7 +137,7 @@
                 </div>
             </div>
             <div class="mb-4">
-                <label for="password" class="form-label">Password</label>
+                <label for="password" class="form-label">{{ __('Password') }}</label>
                 <div class="input-icon">
                     <i class="bi bi-lock-fill"></i>
                     <input id="password" type="password" name="password" class="form-control"
@@ -146,10 +146,10 @@
             </div>
             <div class="mb-4 d-flex align-items-center">
                 <input class="form-check-input me-2" type="checkbox" name="remember" id="remember" style="background-color: transparent;">
-                <label class="form-check-label" for="remember">Remember me</label>
+                <label class="form-check-label" for="remember">{{ __('Remember me') }}</label>
             </div>
             <button type="submit" class="btn btn-login">
-                <i class="bi bi-box-arrow-in-right me-2"></i> Sign In
+                <i class="bi bi-box-arrow-in-right me-2"></i> {{ __('Sign In') }}
             </button>
         </form>
     </div>

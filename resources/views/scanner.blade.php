@@ -88,14 +88,14 @@
     <div class="content-card mb-4">
         <div class="card-header d-flex align-items-center gap-2">
             <i class="bi bi-qr-code-scan" style="color:#6c63ff;"></i>
-            Camera Scanner - {{ $type }}
+            {{ __('Camera Scanner') }} - {{ $type }}
         </div>
         <div class="p-4">
             <div id="qr-reader" class="mb-3">
                 <div class="d-flex align-items-center justify-content-center" style="height:280px;color:#fff;">
                     <div class="text-center text-muted">
                         <i class="bi bi-camera fs-2 mb-2 d-block" style="color:#6c63ff;"></i>
-                        <span style="font-size:0.85rem;">Press Start to activate camera</span>
+                        <span style="font-size:0.85rem;">{{ __('Press Start to activate camera') }}</span>
                     </div>
                 </div>
             </div>
@@ -105,8 +105,8 @@
                     <i class="bi bi-play-fill"></i>
                 </button>
                 <div class="text-center">
-                    <div id="scan-status" style="font-size:0.82rem;color:#6b7280;font-weight:500;">Ready</div>
-                    <div style="font-size:0.72rem;color:#9ca3af;">Point camera at QR code</div>
+                    <div id="scan-status" style="font-size:0.82rem;color:#6b7280;font-weight:500;">{{ __('Ready') }}</div>
+                    <div style="font-size:0.72rem;color:#9ca3af;">{{ __('Point camera at QR code') }}</div>
                 </div>
                 <button id="btn-stop" class="scan-btn scan-btn-stop" title="Stop Scanner" style="display:none;">
                     <i class="bi bi-stop-fill"></i>
@@ -160,10 +160,10 @@ function startScanner() {
         scanning = true;
         btnStart.style.display = 'none';
         btnStop.style.display  = 'flex';
-        scanStatus.textContent = 'Scanning…';
+        scanStatus.textContent = '{{ __('Scanning…') }}';
         scanStatus.style.color = '#6c63ff';
     }).catch(err => {
-        scanStatus.textContent = 'Camera error: ' + err;
+        scanStatus.textContent = '{{ __('Camera error:') }} ' + err;
         scanStatus.style.color = '#ef4444';
     });
 }
@@ -175,13 +175,13 @@ function stopScanner() {
         html5QrCode = null;
         btnStart.style.display = 'flex';
         btnStop.style.display  = 'none';
-        scanStatus.textContent = 'Stopped';
+        scanStatus.textContent = '{{ __('Stopped') }}';
         scanStatus.style.color = '#6b7280';
         document.getElementById('qr-reader').innerHTML = `
             <div class="d-flex align-items-center justify-content-center" style="height:280px;">
                 <div class="text-center text-muted">
                     <i class="bi bi-camera fs-2 mb-2 d-block" style="color:#6c63ff;"></i>
-                    <span style="font-size:0.85rem;">Press Start to activate camera</span>
+                    <span style="font-size:0.85rem;">{{ __('Press Start to activate camera') }}</span>
                 </div>
             </div>`;
     });
@@ -191,7 +191,7 @@ async function onScanSuccess(decodedText) {
     if (processingLock) return;
     processingLock = true;
 
-    scanStatus.textContent = 'Processing…';
+    scanStatus.textContent = '{{ __('Processing…') }}';
     scanStatus.style.color = '#f59e0b';
 
     try {
@@ -211,12 +211,12 @@ async function onScanSuccess(decodedText) {
         // Re-enable scanning after 3 seconds
         setTimeout(() => {
             processingLock = false;
-            scanStatus.textContent = 'Scanning…';
+            scanStatus.textContent = '{{ __('Scanning…') }}';
             scanStatus.style.color = '#6c63ff';
         }, 3000);
 
     } catch (err) {
-        showError('Network error. Please try again.');
+        showError('{{ __('Network error. Please try again.') }}');
         setTimeout(() => { processingLock = false; }, 2000);
     }
 }
@@ -254,13 +254,13 @@ function showResult(data) {
                     </div>
                 </div>
             </div>`;
-        scanStatus.textContent = isEntry ? '✓ Entry Registered' : '✓ Exit Registered';
+        scanStatus.textContent = isEntry ? '✓ {{ __('Entry Registered') }}' : '✓ {{ __('Exit Registered') }}';
         scanStatus.style.color = isEntry ? '#10b981' : '#ef4444';
 
     } else {
         // Rejected
         resultCard.classList.add('result-rejected');
-        const personName = data.person ? data.person.name : 'Unknown';
+        const personName = data.person ? data.person.name : '{{ __('Unknown') }}';
         resultInner.innerHTML = `
             <div class="d-flex align-items-start gap-3">
                 <div style="width:56px;height:56px;border-radius:14px;background:rgba(245,158,11,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
@@ -268,7 +268,7 @@ function showResult(data) {
                 </div>
                 <div class="flex-grow-1">
                     <div class="result-action-badge action-rejected mb-2">
-                        <i class="bi bi-slash-circle"></i> REJECTED
+                        <i class="bi bi-slash-circle"></i> {{ __('REJECTED') }}
                     </div>
                     <div style="font-size:0.9rem;font-weight:600;color:#1a1f36;">${personName}</div>
                     <div class="mt-2" style="font-size:0.85rem;color:#f59e0b;font-weight:500;">
@@ -276,7 +276,7 @@ function showResult(data) {
                     </div>
                 </div>
             </div>`;
-        scanStatus.textContent = '⚠ Scan Rejected';
+        scanStatus.textContent = '⚠ {{ __('Scan Rejected') }}';
         scanStatus.style.color = '#f59e0b';
     }
 
