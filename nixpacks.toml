@@ -1,2 +1,8 @@
 [phases.setup]
-nixPkgs = ["...", "php82Extensions.gd", "php82Extensions.zip"]
+nixPkgs = ["...", "php82Extensions.gd", "php82Extensions.zip", "php82Extensions.pdo_mysql"]
+
+[phases.build]
+cmds = ["npm install", "npm run build"]
+
+[start]
+cmd = "sh start.sh"
