@@ -31,7 +31,7 @@
                 <tbody>
                     @foreach($records as $rec)
                     <tr>
-                        <td class="text-muted" style="font-size:0.8rem;">{{ $rec->id }}</td>
+                        <td class="text-muted" style="font-size:0.8rem;">{{ ($records->currentPage() - 1) * $records->perPage() + $loop->iteration }}</td>
                         <td>
                             @if($rec->person)
                                 <div class="d-flex align-items-center gap-2">

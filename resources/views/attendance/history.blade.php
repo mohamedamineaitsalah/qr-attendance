@@ -98,7 +98,7 @@
                 <tbody>
                     @foreach($records as $record)
                     <tr>
-                        <td class="text-muted" style="font-size:0.8rem;">{{ $record->id }}</td>
+                        <td class="text-muted" style="font-size:0.8rem;">{{ ($records->currentPage() - 1) * $records->perPage() + $loop->iteration }}</td>
                         <td>
                             <div class="d-flex align-items-center gap-2">
                                 <div style="width:32px;height:32px;background:linear-gradient(135deg,#6c63ff,#a78bfa);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.78rem;flex-shrink:0;">
