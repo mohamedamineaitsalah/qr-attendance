@@ -1,0 +1,66 @@
+@extends('layouts.app')
+@section('title', 'Rejected Scans')
+@section('page-title', 'Rejected Scans')
+
+@section('content')
+<div class="content-card">
+    <div class="card-header d-flex align-items-center gap-2">
+        <i class="bi bi-x-octagon-fill" style="color:#f59e0b;"></i>
+        Rejected Scans Log
+        <span class="ms-auto badge" style="background:rgba(245,158,11,0.1);color:#f59e0b;font-size:0.75rem;">
+            {{ $records->total() }} total
+        </span>
+    </div>
+    <div class="card-body">
+        @if($records->isEmpty())
+            <div class="text-center py-5 text-muted">
+                <i class="bi bi-shield-check fs-1 d-block mb-3"></i>
+                <p class="mb-0">No rejected scans recorded.</p>
+            </div>
+        @else
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Person / Token</th>
+                        <th>Reason</th>
+                        <th>Date & Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($records as $rec)
+                    <tr>
+                        <td class="text-muted" style="font-size:0.8rem;">{{ $rec->id }}</td>
+                        <td>
+                            @if($rec->person)
+                                <div class="d-flex align-items-center gap-2">
+                                    <div style="width:32px;height:32px;background:rgba(245,158,11,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#f59e0b;font-weight:700;font-size:0.78rem;flex-shrink:0;">
+                                        {{ strtoupper(substr($rec->person->first_name, 0, 1)) }}
+                                    </div>
+                                    <span class="fw-600" style="font-size:0.88rem;">{{ $rec->person->full_name }}</span>
+                                </div>
+                            @else
+                                <code style="font-size:0.75rem;background:#f0f2f7;padding:3px 7px;border-radius:6px;word-break:break-all;">
+                                    {{ Str::limit($rec->qr_token, 28) }}
+                                </code>
+                            @endif
+                        </td>
+                        <td>
+                            <span class="badge-rejected">{{ $rec->reason }}</span>
+                        </td>
+                        <td class="text-muted" style="font-size:0.82rem;">
+                            {{ $rec->created_at->format('d M Y, H:i:s') }}
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div class="d-flex justify-content-center py-3">
+            {{ $records->links() }}
+        </div>
+        @endif
+    </div>
+</div>
+@endsection
