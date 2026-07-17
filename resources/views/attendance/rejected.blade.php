@@ -8,7 +8,7 @@
         <i class="bi bi-x-octagon-fill" style="color:#f59e0b;"></i>
         {{ __('Rejected Scans Log') }}
         
-        <form action="{{ route('attendance.clear_rejected') }}" method="POST" class="ms-3" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer tous les scans refusés ?')">
+        <form action="{{ route('attendance.clear_rejected') }}" method="POST" class="ms-3" onsubmit="return confirm('{{ __('Êtes-vous sûr de vouloir supprimer tous les scans refusés ?') }}')">
             @csrf @method('DELETE')
             <button type="submit" class="btn btn-sm rounded-3" style="background:rgba(239,68,68,0.1);color:#ef4444;font-weight:600;font-size:0.75rem;">
                 <i class="bi bi-trash-fill me-1"></i> {{ __('Supprimer tout') }}

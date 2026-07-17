@@ -108,5 +108,12 @@
     "Email address": "البريد الإلكتروني",
     "Password": "كلمة المرور",
     "Remember me": "تذكرني",
-    "Sign In": "تسجيل الدخول"
+    "Sign In": "تسجيل الدخول",
+    "Jeton QR introuvable dans la base de données.": "رمز الاستجابة السريعة غير موجود في قاعدة البيانات.",
+    "Scan d'ENTRÉE refusé : Personne déjà à l'intérieur.": "تم رفض ماسح الدخول: الشخص موجود بالفعل في الداخل.",
+    "Scan de SORTIE refusé : Personne déjà à l'extérieur.": "تم رفض ماسح الخروج: الشخص بالخارج بالفعل.",
+    "Supprimer tout": "مسح الكل",
+    "Êtes-vous sûr de vouloir supprimer tous les scans refusés ?": "هل أنت متأكد من أنك تريد حذف جميع عمليات المسح المرفوضة؟",
+    "Êtes-vous sûr de vouloir supprimer tout l'historique ?": "هل أنت متأكد من أنك تريد حذف السجل بأكمله؟",
+    "Imprimer la carte": "طباعة البطاقة"
 }

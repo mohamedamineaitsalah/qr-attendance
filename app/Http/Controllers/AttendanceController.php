@@ -56,6 +56,7 @@ class AttendanceController extends Controller
     {
         Attendance::truncate();
         RejectedScan::truncate();
+        Person::query()->update(['status' => 'OUTSIDE']);
         return redirect()->back()->with('success', __('All history cleared successfully.'));
     }
 

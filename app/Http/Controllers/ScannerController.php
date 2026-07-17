@@ -38,7 +38,7 @@ class ScannerController extends Controller
                 RejectedScan::create([
                     'person_id' => null,
                     'qr_token'  => $token,
-                    'reason'    => 'QR token not found in database.',
+                    'reason'    => "Jeton QR introuvable dans la base de données.",
                 ]);
                 return response()->json([
                     'status'  => 'rejected',
@@ -51,7 +51,7 @@ class ScannerController extends Controller
                     RejectedScan::create([
                         'person_id' => $person->id,
                         'qr_token'  => $token,
-                        'reason'    => 'Scan ENTRY rejected: Person already inside.',
+                        'reason'    => "Scan d'ENTRÉE refusé : Personne déjà à l'intérieur.",
                     ]);
                     return response()->json([
                         'status'  => 'rejected',
@@ -64,7 +64,7 @@ class ScannerController extends Controller
                     RejectedScan::create([
                         'person_id' => $person->id,
                         'qr_token'  => $token,
-                        'reason'    => 'Scan EXIT rejected: Person already outside.',
+                        'reason'    => "Scan de SORTIE refusé : Personne déjà à l'extérieur.",
                     ]);
                     return response()->json([
                         'status'  => 'rejected',
